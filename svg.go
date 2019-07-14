@@ -41,7 +41,7 @@ type Svg struct {
 type Group struct {
 	ID              string
 	Stroke          string
-	StrokeWidth     int32
+	StrokeWidth     float64
 	Fill            string
 	FillRule        string
 	Elements        []DrawingInstructionParser
@@ -93,11 +93,11 @@ func (g *Group) UnmarshalXML(decoder *xml.Decoder, start xml.StartElement) error
 		case "stroke":
 			g.Stroke = attr.Value
 		case "stroke-width":
-			intValue, err := strconv.ParseInt(attr.Value, 10, 32)
+			floatValue, err := strconv.ParseFloat(attr.Value, 64)
 			if err != nil {
 				return err
 			}
-			g.StrokeWidth = int32(intValue)
+			g.StrokeWidth = floatValue
 		case "fill":
 			g.Fill = attr.Value
 		case "fill-rule":
