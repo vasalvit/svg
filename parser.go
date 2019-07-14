@@ -81,9 +81,16 @@ func parseMatrix(l *gl.Lexer) (mt.Transform, error) {
 			fmt.Errorf("Error Parsing Transform Matrix: %v", err)
 	}
 	var tm mt.Transform
-	for i := 0; i < 6; i++ {
-		tm[i%3][i/3] = nums[i]
-	}
+	tm[0][0] = nums[0]
+	tm[0][1] = nums[2]
+	tm[0][2] = nums[4]
+	tm[1][0] = nums[1]
+	tm[1][1] = nums[3]
+	tm[1][2] = nums[5]
+	tm[2][0] = 0
+	tm[2][1] = 0
+	tm[2][2] = 1
+
 	return tm, nil
 }
 
