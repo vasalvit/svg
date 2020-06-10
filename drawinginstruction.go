@@ -10,7 +10,6 @@ const (
 	CircleInstruction
 	CurveInstruction
 	LineInstruction
-	HLineInstruction
 	CloseInstruction
 	PaintInstruction
 )

@@ -196,6 +196,10 @@ func (pdp *pathDescriptionParser) parseCommand(l *gl.Lexer, i gl.Item) error {
 		return pdp.parseHLineToAbs()
 	case "h":
 		return pdp.parseHLineToRel()
+	case "V":
+		return pdp.parseVLineToAbs()
+	case "v":
+		return pdp.parseVLineToRel()
 	case "z", "Z":
 		return pdp.parseClose()
 	}
@@ -590,7 +594,6 @@ func (pdp *pathDescriptionParser) parseHLineToRel() error {
 	pdp.currentsegment.addPoint([2]float64{x, y})
 
 	return nil
-
 }
 
 func (pdp *pathDescriptionParser) parseVLineToDI(abs bool) error {
